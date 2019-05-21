@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup, Tag, NavigableString
 from urllib.parse import urljoin
 
 
-def scrape_eecs():
+def scrape_mccormick_courses(dept="computer-science"):
     # download the index page
-    index_url = "https://www.mccormick.northwestern.edu/eecs/courses/"
+    index_url = "https://www.mccormick.northwestern.edu/"+dept+"/courses/"
     index_page = requests.get(index_url)
     # load the page into beautifulsoup for parsing
     index = BeautifulSoup(index_page.content, 'html.parser')
@@ -47,4 +47,6 @@ def scrape_eecs():
 
 
 if __name__ == '__main__':
-    scrape_eecs();
+    scrape_mccormick_courses("computer-science");
+    scrape_mccormick_courses("industrial");
+
